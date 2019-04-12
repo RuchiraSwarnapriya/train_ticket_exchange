@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +18,26 @@ class _HomePageState extends State<HomePage> {
   @override
 
   Widget build(BuildContext context) {
+
+  Widget image_carousel = new Container(
+    height: 200.0,
+    child: new Carousel(
+      boxFit: BoxFit.cover,
+      images: [
+        AssetImage('images/carousel/1.jpg'),
+        AssetImage('images/carousel/2.jpg'),
+        AssetImage('images/carousel/3.jpg'),
+        AssetImage('images/carousel/4.jpg'),
+      ],
+      autoplay: true,
+      animationCurve: Curves.fastOutSlowIn,
+      animationDuration: Duration(milliseconds: 1000),
+      dotSize: 3.0,
+      showIndicator: false,
+    ),
+  );
+
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
@@ -27,6 +48,11 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         fixedColor: Colors.deepPurple,
         onTap: _onItemTapped,
+      ),
+      body: new ListView(
+        children: <Widget>[
+          image_carousel
+        ],
       ),
     );
   }
