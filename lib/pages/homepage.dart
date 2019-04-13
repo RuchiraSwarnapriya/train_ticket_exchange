@@ -3,6 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:train_ticket_exchange/pages/myaccount.dart';
 import 'package:train_ticket_exchange/pages/mytickets.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:train_ticket_exchange/pages/signInpage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,8 +43,9 @@ class _HomePageState extends State<HomePage> {
                   return MyTickets();
                   break;
                 case 2:
-                  return MyAccount();
+                  return SignIn();
                   break;
+
                 default:
                   return Container();}
             }
@@ -62,7 +64,7 @@ class HomePageDesign extends StatefulWidget {
 class _HomePageDesignState extends State<HomePageDesign> {
   @override
 
-  Widget image_carousel = new Container(
+  Widget imageCarousel = new Container(
     height: 200.0,
     child: new Carousel(
       boxFit: BoxFit.cover,
@@ -84,7 +86,7 @@ class _HomePageDesignState extends State<HomePageDesign> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          image_carousel;
+          imageCarousel
         ],
       ),
     );
