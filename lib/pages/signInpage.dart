@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_ticket_exchange/pages/myaccount.dart';
 import 'package:train_ticket_exchange/pages/signUppage.dart';
+import 'package:train_ticket_exchange/pages/ticketdetails.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -15,11 +16,6 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          iconTheme: new IconThemeData(color: Color(0xFF18D191)),
-        ),
         resizeToAvoidBottomPadding: true,
         body: Form(
             key: _formKey,
@@ -71,16 +67,16 @@ class _SignInState extends State<SignIn> {
                           height: 40.0,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
-                            shadowColor: Colors.greenAccent,
-                            color: Colors.green,
+                            shadowColor: Colors.grey,
+                            color: Colors.black,
                             elevation: 7.0,
                             child: InkWell(
                               onTap: () =>
                                   Navigator.push(context, new MaterialPageRoute(
-                                      builder: (context) => MyAccount())),
+                                      builder: (context) => TicketDetails())),
                               child: Center(
                                 child: Text(
-                                  'LOGIN',
+                                  'SIGN IN',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
