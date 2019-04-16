@@ -4,6 +4,7 @@ import 'package:train_ticket_exchange/pages/myaccount.dart';
 import 'package:train_ticket_exchange/pages/mytickets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:train_ticket_exchange/pages/signInpage.dart';
+import 'package:train_ticket_exchange/components/horizontallistview.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -86,7 +87,10 @@ class _HomePageDesignState extends State<HomePageDesign> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          imageCarousel
+          imageCarousel,
+          new Padding(padding: const EdgeInsets.all(10.0),
+            child: new Text("Categories", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),),
+          HorizontalList(),
         ],
       ),
     );

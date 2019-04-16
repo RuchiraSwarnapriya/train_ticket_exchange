@@ -47,6 +47,14 @@ flutter:
      - images/carousel/2.jpg
      - images/carousel/3.jpg
      - images/carousel/4.jpg
+     - images/ticketcato/1stclassobservation.png
+     - images/ticketcato/1stclassac.png
+     - images/ticketcato/1stclasssleep.png
+     - images/ticketcato/1stclassnormal.png
+     - images/ticketcato/2ndclassnormal.png
+     - images/ticketcato/2ndclasssleep.png
+     - images/ticketcato/3rdclassnormal.png
+     - images/ticketcato/3rdclasssleep.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
