@@ -73,7 +73,7 @@ class _SignInState extends State<SignIn> {
                             child: InkWell(
                               onTap: () =>
                                   Navigator.push(context, new MaterialPageRoute(
-                                      builder: (context) => TicketDetails())),
+                                      builder: (context) => MyAccount())),
                               child: Center(
                                 child: Text(
                                   'SIGN IN',
