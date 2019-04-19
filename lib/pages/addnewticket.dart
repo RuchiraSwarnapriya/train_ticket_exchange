@@ -3,6 +3,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 
 
+
 class AddNewTicket extends StatefulWidget {
   @override
   _AddNewTicketState createState() => _AddNewTicketState();
@@ -19,6 +20,16 @@ class _AddNewTicketState extends State<AddNewTicket> {
 
   InputType inputType = InputType.both;
   bool editable = true;
+
+  List<String> _ticketTypes = <String>['', '1st Class', '2nd Class', '3rd Class',];
+  String _ticketType = '';
+
+  List<String> _compartments = <String>['','OFV','A', 'B', 'C', 'D', 'F','G','H','I'];
+  String _compartment = '';
+
+  List<String> _purposes = <String>['','Sale','Exchange'];
+  String _purpose = '';
+
 
 
   @override
@@ -110,61 +121,109 @@ class _AddNewTicketState extends State<AddNewTicket> {
                           obscureText: true,
                         ),
                         SizedBox(height: 20.0),
-                        TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
-                          decoration: InputDecoration(
-                              labelText: 'PURPOSE',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+                        new FormField<String>(
+                          builder: (FormFieldState<String> state) {
+                            return InputDecorator(
+                              decoration: InputDecoration(
+                                  labelText: 'PURPOSE',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.green))
+                              ),
+                              isEmpty: _purpose == '',
+                              child: new DropdownButtonHideUnderline(
+                                child: new DropdownButton<String>(
+                                  value: _purpose,
+                                  isDense: true,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      _purpose = newValue;
+                                      state.didChange(newValue);
+                                    });
+                                  },
+                                  items: _purposes.map((String value) {
+                                    return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: new Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(height: 20.0),
-                        TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
-                          decoration: InputDecoration(
-                              labelText: 'TICKET TYPE',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+                        new FormField<String>(
+                          builder: (FormFieldState<String> state) {
+                            return InputDecorator(
+                              decoration: InputDecoration(
+                                  labelText: 'TICKET TYPE',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.green))
+                              ),
+                              isEmpty: _ticketType == '',
+                              child: new DropdownButtonHideUnderline(
+                                child: new DropdownButton<String>(
+                                  value: _ticketType,
+                                  isDense: true,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      _ticketType = newValue;
+                                      state.didChange(newValue);
+                                    });
+                                  },
+                                  items: _ticketTypes.map((String value) {
+                                    return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: new Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(height: 20.0),
-                        TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
-                          decoration: InputDecoration(
-                              labelText: 'COMPARTMENT',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+                        new FormField<String>(
+                          builder: (FormFieldState<String> state) {
+                            return InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'COMPARTMENT',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.green))
+                              ),
+                              isEmpty: _compartment == '',
+                              child: new DropdownButtonHideUnderline(
+                                child: new DropdownButton<String>(
+                                  value: _compartment,
+                                  isDense: true,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      _compartment = newValue;
+                                      state.didChange(newValue);
+                                    });
+                                  },
+                                  items: _compartments.map((String value) {
+                                    return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: new Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
