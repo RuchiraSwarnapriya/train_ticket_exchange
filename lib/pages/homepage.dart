@@ -5,6 +5,7 @@ import 'package:train_ticket_exchange/pages/mytickets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:train_ticket_exchange/pages/signInpage.dart';
 import 'package:train_ticket_exchange/components/horizontallistview.dart';
+import 'package:train_ticket_exchange/components/recentTicketListView.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -91,6 +92,13 @@ class _HomePageDesignState extends State<HomePageDesign> {
           new Padding(padding: const EdgeInsets.all(10.0),
             child: new Text("Categories", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),),
           HorizontalList(),
+          new Padding(padding: const EdgeInsets.all(10.0),
+            child: new Text("Recent Tickets", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),),
+          new Container(
+            height: 200.0,
+
+            child: RecentTickets(),
+          )
         ],
       ),
     );

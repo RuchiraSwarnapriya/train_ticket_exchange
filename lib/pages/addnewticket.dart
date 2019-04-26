@@ -85,7 +85,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                                   color: Colors.grey),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+
                         ),
                         SizedBox(height: 20.0),
                         DateTimePickerFormField(
@@ -118,7 +118,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                                   color: Colors.grey),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
@@ -242,7 +242,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                                   color: Colors.grey),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
@@ -261,7 +261,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                                   color: Colors.grey),
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
-                          obscureText: true,
+
                         ),
                         SizedBox(height: 40.0),
                         Container(
