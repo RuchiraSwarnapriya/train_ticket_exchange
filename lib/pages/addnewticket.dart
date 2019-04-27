@@ -13,7 +13,9 @@ class AddNewTicket extends StatefulWidget {
 
 class _AddNewTicketState extends State<AddNewTicket> {
 
-  String startStation, endStation, dateTime, price, purpose, ticketType, compartment, seatNo, contactNo;
+  String startStation, endStation, price, purpose, ticketType, compartment, seatNo, contactNo;
+
+  DateTime dateTime;
 
   String id;
 
@@ -95,26 +97,20 @@ class _AddNewTicketState extends State<AddNewTicket> {
 
                         ),
                         SizedBox(height: 20.0),
-//                        DateTimePickerFormField(
-////                          validator: (input){
-////                            if (input.i){
-////                              return "Please enter the End Station";
-////                            }
-////
-////                          },
-//                          onSaved: (input) => dateTime = date,
-//                          inputType: inputType,
-//                          format: formats[inputType],
-//                          editable: editable,
-//                          decoration: InputDecoration(
-//                              labelText: 'START DATE & TIME',
-//                              labelStyle: TextStyle(
-//                                  fontFamily: 'Montserrat',
-//                                  fontWeight: FontWeight.bold,
-//                                  color: Colors.grey),
-//                              focusedBorder: UnderlineInputBorder(
-//                                  borderSide: BorderSide(color: Colors.green))),
-//                        ),
+                        DateTimePickerFormField(
+                          onSaved: (input) => dateTime = input,
+                          inputType: inputType,
+                          format: formats[inputType],
+                          editable: editable,
+                          decoration: InputDecoration(
+                              labelText: 'START DATE & TIME',
+                              labelStyle: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.green))),
+                        ),
                         SizedBox(height: 20.0),
                         TextFormField(
                       validator: (input){
@@ -136,12 +132,6 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
-                          validator: (input){
-                            if (input.isEmpty){
-                              return "Please select the purpose";
-                            }
-
-                          },
                           onSaved: (input) => purpose = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
@@ -262,13 +252,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-                      validator: (input){
+                        validator: (input){
                         if (input.isEmpty){
                           return "Please enter the seat number";
                         }
 
-                      },
-                      onSaved: (input) => seatNo = input,
+                        },
+                        onSaved: (input) => seatNo = input,
                           decoration: InputDecoration(
                               labelText: 'SEAT NO',
                               labelStyle: TextStyle(
@@ -281,7 +271,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-                      onSaved: (input) => contactNo = input,
+                          validator: (input){
+                            if (input.isEmpty){
+                              return "Please enter the seat number";
+                            }
+
+                          },
+                          onSaved: (input) => contactNo = input,
                           decoration: InputDecoration(
                               labelText: 'CONTACT NO',
                               labelStyle: TextStyle(
@@ -337,6 +333,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
               'compartment':compartment,
               'seatNo':seatNo,
               'contactNo':contactNo,
+              'dateTime':dateTime,
             });
         setState(() => id = ref.documentID);
         Navigator.push(context, new MaterialPageRoute(builder: (context) => MyAccount()));
