@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:train_ticket_exchange/pages/myaccount.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -11,7 +13,12 @@ class AddNewTicket extends StatefulWidget {
 
 class _AddNewTicketState extends State<AddNewTicket> {
 
-  String _email, _password;
+  String startStation, endStation, dateTime, price, purpose, ticketType, compartment, seatNo, contactNo;
+
+  String id;
+
+  final db = Firestore.instance;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final formats = {
@@ -53,12 +60,12 @@ class _AddNewTicketState extends State<AddNewTicket> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
-//                      validator: (input){
-//                        if (input.isEmpty){
-//                          return "Please enter the email Address";
-//                        }
-//                      },
-//                      onSaved: (input) => _email = input,
+                      validator: (input){
+                        if (input.isEmpty){
+                          return "Please enter the Start Station";
+                        }
+                      },
+                      onSaved: (input) => startStation = input,
                           decoration: InputDecoration(
                               labelText: 'START STATION',
                               labelStyle: TextStyle(
@@ -70,13 +77,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
+                      validator: (input){
+                        if (input.isEmpty){
+                          return "Please enter the End Station";
+                        }
+
+                      },
+                      onSaved: (input) => endStation = input,
                           decoration: InputDecoration(
                               labelText: 'END STATION',
                               labelStyle: TextStyle(
@@ -88,28 +95,35 @@ class _AddNewTicketState extends State<AddNewTicket> {
 
                         ),
                         SizedBox(height: 20.0),
-                        DateTimePickerFormField(
-                          inputType: inputType,
-                          format: formats[inputType],
-                          editable: editable,
-                          decoration: InputDecoration(
-                              labelText: 'START DATE & TIME',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
-                        ),
+//                        DateTimePickerFormField(
+////                          validator: (input){
+////                            if (input.i){
+////                              return "Please enter the End Station";
+////                            }
+////
+////                          },
+//                          onSaved: (input) => dateTime = date,
+//                          inputType: inputType,
+//                          format: formats[inputType],
+//                          editable: editable,
+//                          decoration: InputDecoration(
+//                              labelText: 'START DATE & TIME',
+//                              labelStyle: TextStyle(
+//                                  fontFamily: 'Montserrat',
+//                                  fontWeight: FontWeight.bold,
+//                                  color: Colors.grey),
+//                              focusedBorder: UnderlineInputBorder(
+//                                  borderSide: BorderSide(color: Colors.green))),
+//                        ),
                         SizedBox(height: 20.0),
                         TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
+                      validator: (input){
+                        if (input.isEmpty){
+                          return "Please enter the ticket price";
+                        }
+
+                      },
+                      onSaved: (input) => price = input,
                           decoration: InputDecoration(
                               labelText: 'PRICE',
                               labelStyle: TextStyle(
@@ -122,6 +136,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
+                          validator: (input){
+                            if (input.isEmpty){
+                              return "Please select the purpose";
+                            }
+
+                          },
+                          onSaved: (input) => purpose = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
                               decoration: InputDecoration(
@@ -157,6 +178,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
+                          validator: (input){
+                            if (input.isEmpty){
+                              return "Please select the ticket type";
+                            }
+
+                          },
+                          onSaved: (input) => ticketType = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
                               decoration: InputDecoration(
@@ -192,6 +220,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
+                          validator: (input){
+                            if (input.isEmpty){
+                              return "Please select the compartment ";
+                            }
+
+                          },
+                          onSaved: (input) => compartment = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
                               decoration: InputDecoration(
@@ -227,13 +262,13 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
+                      validator: (input){
+                        if (input.isEmpty){
+                          return "Please enter the seat number";
+                        }
+
+                      },
+                      onSaved: (input) => seatNo = input,
                           decoration: InputDecoration(
                               labelText: 'SEAT NO',
                               labelStyle: TextStyle(
@@ -246,13 +281,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
+                      onSaved: (input) => contactNo = input,
                           decoration: InputDecoration(
                               labelText: 'CONTACT NO',
                               labelStyle: TextStyle(
@@ -272,9 +301,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                             color: Colors.black,
                             elevation: 7.0,
                             child: InkWell(
-                              onTap: () =>
-                                  Navigator.push(context, new MaterialPageRoute(
-                                      builder: (context) => AddNewTicket())),
+                              onTap: addTicket,
                               child: Center(
                                 child: Text(
                                   'SUBMIT',
@@ -294,6 +321,30 @@ class _AddNewTicketState extends State<AddNewTicket> {
               ],
             ))
     );
+  }
+
+  addTicket() async {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      try{
+        DocumentReference ref = await db.collection('TicketDetails').add(
+            {
+              'startStation':startStation,
+              'endStation':endStation,
+              'price':price,
+              'purpose':purpose,
+              'ticketType':ticketType,
+              'compartment':compartment,
+              'seatNo':seatNo,
+              'contactNo':contactNo,
+            });
+        setState(() => id = ref.documentID);
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => MyAccount()));
+      }catch(e){
+        print(e);
+      }
+    }
+
   }
 
 

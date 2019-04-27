@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   carousel_pro: ^0.0.1
   datetime_picker_formfield: ^0.1.8
+  cloud_firestore: 0.8.2+3
+
 
 dev_dependencies:
   flutter_test:
