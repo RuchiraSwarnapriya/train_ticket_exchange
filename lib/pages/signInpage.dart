@@ -3,6 +3,8 @@ import 'package:train_ticket_exchange/pages/myaccount.dart';
 import 'package:train_ticket_exchange/pages/signUppage.dart';
 import 'package:train_ticket_exchange/pages/ticketdetails.dart';
 import 'package:train_ticket_exchange/pages/addnewticket.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class SignIn extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
-  String _email, _password;
+  String email, password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -21,7 +23,6 @@ class _SignInState extends State<SignIn> {
         body: Form(
             key: _formKey,
             child: ListView(
-//          crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
                     padding: EdgeInsets.only(
@@ -29,12 +30,9 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
-//                      validator: (input){
-//                        if (input.isEmpty){
-//                          return "Please enter the email Address";
-//                        }
-//                      },
-//                      onSaved: (input) => _email = input,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: validateEmail,
+                          onSaved: (input) => email = input,
                           decoration: InputDecoration(
                               labelText: 'EMAIL',
                               labelStyle: TextStyle(
@@ -46,13 +44,13 @@ class _SignInState extends State<SignIn> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-//                      validator: (input){
-//                        if (input.length < 8){
-//                          return "Password Must be 8 Characters";
-//                        }
-//
-//                      },
-//                      onSaved: (input) => _password = input,
+                      validator: (input){
+                        if (input.length < 8){
+                          return "Password Must be 8 Characters";
+                        }
+
+                      },
+                      onSaved: (input) => password = input,
                           decoration: InputDecoration(
                               labelText: 'PASSWORD',
                               labelStyle: TextStyle(
@@ -72,9 +70,7 @@ class _SignInState extends State<SignIn> {
                             color: Colors.black,
                             elevation: 7.0,
                             child: InkWell(
-                              onTap: () =>
-                                  Navigator.push(context, new MaterialPageRoute(
-                                      builder: (context) => AddNewTicket())),
+                              onTap: signIn,
                               child: Center(
                                 child: Text(
                                   'SIGN IN',
@@ -118,14 +114,24 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
+  }
+
 
   Future<void> signIn() async {
     final formState = _formKey.currentState;
     if (formState.validate()) {
       formState.save();
       try {
-////        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-//        Navigator.push(context,new MaterialPageRoute(builder: (context)=> AddNewTicket()));
+        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+        Navigator.push(context,new MaterialPageRoute(builder: (context)=> AddNewTicket()));
       } catch (e) {
         print(e.message);
       }

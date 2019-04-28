@@ -98,6 +98,12 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         DateTimePickerFormField(
+                          validator: (input){
+                            if (input == null){
+                              return "Please select Start Date & Time";
+                            }
+
+                          },
                           onSaved: (input) => dateTime = input,
                           inputType: inputType,
                           format: formats[inputType],
@@ -168,12 +174,6 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
-                          validator: (input){
-                            if (input.isEmpty){
-                              return "Please select the ticket type";
-                            }
-
-                          },
                           onSaved: (input) => ticketType = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
@@ -185,6 +185,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
                                       color: Colors.grey),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(color: Colors.green))
+
                               ),
                               isEmpty: _ticketType == '',
                               child: new DropdownButtonHideUnderline(
@@ -207,15 +208,10 @@ class _AddNewTicketState extends State<AddNewTicket> {
                               ),
                             );
                           },
+
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
-                          validator: (input){
-                            if (input.isEmpty){
-                              return "Please select the compartment ";
-                            }
-
-                          },
                           onSaved: (input) => compartment = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
@@ -252,12 +248,6 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-                        validator: (input){
-                        if (input.isEmpty){
-                          return "Please enter the seat number";
-                        }
-
-                        },
                         onSaved: (input) => seatNo = input,
                           decoration: InputDecoration(
                               labelText: 'SEAT NO',
@@ -271,12 +261,6 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
-                          validator: (input){
-                            if (input.isEmpty){
-                              return "Please enter the seat number";
-                            }
-
-                          },
                           onSaved: (input) => contactNo = input,
                           decoration: InputDecoration(
                               labelText: 'CONTACT NO',
