@@ -70,7 +70,9 @@ class _SignInState extends State<SignIn> {
                             color: Colors.black,
                             elevation: 7.0,
                             child: InkWell(
-                              onTap: signIn,
+                              onTap: () =>
+                                  Navigator.push(context, new MaterialPageRoute(
+                                      builder: (context) => MyAccount())),
                               child: Center(
                                 child: Text(
                                   'SIGN IN',

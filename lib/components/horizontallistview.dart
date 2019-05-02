@@ -20,49 +20,49 @@ class HorizontalList extends StatelessWidget {
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsObv())),
               child: Category(
-                image_location: "images/ticketcato/1stclassobservation.png",
-              )
+                imageLocation: "images/ticketcato/1stclassobservation.png",
+              ),
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsAC())),
               child: Category(
-                image_location: "images/ticketcato/1stclassac.png",
+                imageLocation: "images/ticketcato/1stclassac.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsLux())),
               child: Category(
-                image_location: "images/ticketcato/1stclasssleep.png",
+                imageLocation: "images/ticketcato/1stclasssleep.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsNor())),
               child: Category(
-                image_location: "images/ticketcato/1stclassnormal.png",
+                imageLocation: "images/ticketcato/1stclassnormal.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> SecondClsNor())),
               child: Category(
-                image_location: "images/ticketcato/2ndclassnormal.png",
+                imageLocation: "images/ticketcato/2ndclassnormal.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> SecondClsSlp())),
               child: Category(
-                image_location: "images/ticketcato/2ndclasssleep.png",
+                imageLocation: "images/ticketcato/2ndclasssleep.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> ThirdClsNor())),
               child: Category(
-                image_location: "images/ticketcato/3rdclassnormal.png",
+                imageLocation: "images/ticketcato/3rdclassnormal.png",
               )
           ),
           GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> ThirdClsSlp())),
               child: Category(
-                image_location: "images/ticketcato/3rdclasssleep.png",
+                imageLocation: "images/ticketcato/3rdclasssleep.png",
               )
           ),
         ],
@@ -72,11 +72,11 @@ class HorizontalList extends StatelessWidget {
 }
 
 class Category extends StatelessWidget {
-  final String image_location;
+  final String imageLocation;
 
 
   Category({
-    this.image_location,
+    this.imageLocation,
   });
 
   @override
@@ -86,7 +86,7 @@ class Category extends StatelessWidget {
         width: 85.0,
         child: ListTile(
           title: Image.asset(
-            image_location,
+            imageLocation,
             width: 80.0,
             height: 100.0,
           ),

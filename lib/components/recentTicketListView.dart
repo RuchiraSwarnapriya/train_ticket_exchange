@@ -67,7 +67,8 @@ class TicketDetails extends StatelessWidget {
                     leading: Text(
                       startStation,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,
+                      ),
 
                     ),
                   ),
