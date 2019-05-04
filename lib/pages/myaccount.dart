@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_ticket_exchange/pages/addnewticket.dart';
+import 'package:train_ticket_exchange/pages/settings.dart';
 
 class MyAccount extends StatefulWidget {
   @override
@@ -21,9 +22,8 @@ class _MyAccountState extends State<MyAccount> {
           crossAxisCount: 2,
           padding: EdgeInsets.all(3.0),
           children: <Widget>[
-            makeDashboardItem("Ordbog"),
-//            makeDashboardItem("Alphabet", Icons.monetization_on),
-//            makeDashboardItem("Alphabet", Icons.alarm),
+            sellTicket("Sell Ticket", Icons.attach_money),
+            settings("Settings", Icons.settings),
 //            makeDashboardItem("Alphabet", Icons.alarm),
 //            makeDashboardItem("Alphabet", Icons.alarm),
 //            makeDashboardItem("Alphabet", Icons.alarm)
@@ -34,32 +34,86 @@ class _MyAccountState extends State<MyAccount> {
 
     );
   }
-  Card makeDashboardItem(String title, ) {
+  Card sellTicket(String title , IconData icon) {
     return Card(
         elevation: 1.0,
         margin: new EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage('images/myaccount/sell.png'),
+              fit:BoxFit.fitHeight
+            ),
+            border: Border.all(
+              color: Colors.white70,
+              width: 3.0,
+            ),
+          ),
           child: new InkWell(
-            onTap: () {},
+            onTap: () =>
+                Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) => AddNewTicket())),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               verticalDirection: VerticalDirection.down,
               children: <Widget>[
-                SizedBox(height: 50.0),
-//                Center(
-//                    child: Icon(
-//                      icon,
-//                      size: 40.0,
-//                      color: Colors.black,
-//                    )),
-                SizedBox(height: 20.0),
-                new Center(
+                SizedBox(height: 70.0),
+                Center(
                   child: new Text(title,
                       style:
-                      new TextStyle(fontSize: 18.0, color: Colors.black)),
-                )
+                      new TextStyle(fontSize: 18.0, color: Colors.white)),
+                ),
+                SizedBox(height: 5.0),
+                Center(
+                    child: Icon(
+                      icon,
+                      size: 20.0,
+                      color: Colors.white70,
+                    )),
+              ],
+            ),
+          ),
+        ));
+  }
+
+  Card settings(String title , IconData icon) {
+    return Card(
+        elevation: 1.0,
+        margin: new EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: ExactAssetImage('images/myaccount/sell.png'),
+                fit:BoxFit.fitHeight
+            ),
+            border: Border.all(
+              color: Colors.white70,
+              width: 3.0,
+            ),
+          ),
+          child: new InkWell(
+            onTap: () =>
+                Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) => Settings())),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              verticalDirection: VerticalDirection.down,
+              children: <Widget>[
+                SizedBox(height: 70.0),
+                Center(
+                  child: new Text(title,
+                      style:
+                      new TextStyle(fontSize: 18.0, color: Colors.white)),
+                ),
+                SizedBox(height: 5.0),
+                Center(
+                    child: Icon(
+                      icon,
+                      size: 20.0,
+                      color: Colors.white70,
+                    )),
               ],
             ),
           ),
