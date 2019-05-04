@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:train_ticket_exchange/pages/addnewticket.dart';
 import 'package:train_ticket_exchange/pages/settings.dart';
 
@@ -16,108 +17,80 @@ class _MyAccountState extends State<MyAccount> {
         backgroundColor: Colors.transparent,
         iconTheme: new IconThemeData(color:Colors.black),
       ),
-      body:Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 3.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: EdgeInsets.all(3.0),
-          children: <Widget>[
-            sellTicket("Sell Ticket", Icons.attach_money),
-            settings("Settings", Icons.settings),
-//            makeDashboardItem("Alphabet", Icons.alarm),
-//            makeDashboardItem("Alphabet", Icons.alarm),
-//            makeDashboardItem("Alphabet", Icons.alarm)
-          ],
 
-        ),
-      )
+      body: StaggeredGridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 12.0,
+        padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0),
+        children: <Widget>[
+          myItems(Icons.attach_money,"Sell Ticket",0xffed622b),
+          myItems(Icons.settings,"Settings",0xffed622b),
+        ],
+        staggeredTiles: [
+          StaggeredTile.extent(1, 150.0),
+          StaggeredTile.extent(1, 150.0),
+        ],
+
+      ),
+
 
     );
   }
-  Card sellTicket(String title , IconData icon) {
-    return Card(
-        elevation: 1.0,
-        margin: new EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: ExactAssetImage('images/myaccount/sell.png'),
-              fit:BoxFit.fitHeight
-            ),
-            border: Border.all(
-              color: Colors.white70,
-              width: 3.0,
-            ),
-          ),
+
+  Material myItems(IconData icon,String heading, int color){
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      shadowColor: Colors.grey,
+      borderRadius: BorderRadius.circular(24.0),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: new InkWell(
             onTap: () =>
                 Navigator.push(context, new MaterialPageRoute(
                     builder: (context) => AddNewTicket())),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              verticalDirection: VerticalDirection.down,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 70.0),
-                Center(
-                  child: new Text(title,
-                      style:
-                      new TextStyle(fontSize: 18.0, color: Colors.white)),
-                ),
-                SizedBox(height: 5.0),
-                Center(
-                    child: Icon(
-                      icon,
-                      size: 20.0,
-                      color: Colors.white70,
-                    )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(heading,
+                        style: TextStyle(
+                          color: new Color(color),
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+
+                    Material(
+                      color: new Color(color),
+                      borderRadius: BorderRadius.circular(24.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Icon(
+                          icon,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
-          ),
-        ));
+
+          )
+
+        ),
+      ),
+    );
   }
 
-  Card settings(String title , IconData icon) {
-    return Card(
-        elevation: 1.0,
-        margin: new EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: ExactAssetImage('images/myaccount/sell.png'),
-                fit:BoxFit.fitHeight
-            ),
-            border: Border.all(
-              color: Colors.white70,
-              width: 3.0,
-            ),
-          ),
-          child: new InkWell(
-            onTap: () =>
-                Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) => Settings())),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              verticalDirection: VerticalDirection.down,
-              children: <Widget>[
-                SizedBox(height: 70.0),
-                Center(
-                  child: new Text(title,
-                      style:
-                      new TextStyle(fontSize: 18.0, color: Colors.white)),
-                ),
-                SizedBox(height: 5.0),
-                Center(
-                    child: Icon(
-                      icon,
-                      size: 20.0,
-                      color: Colors.white70,
-                    )),
-              ],
-            ),
-          ),
-        ));
-  }
 
 }
