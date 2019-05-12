@@ -30,14 +30,10 @@ class _AddNewTicketState extends State<AddNewTicket> {
   InputType inputType = InputType.both;
   bool editable = true;
 
-  List<String> _ticketTypes = <String>['', '1st Class', '2nd Class', '3rd Class',];
-  String _ticketType = '';
 
-  List<String> _compartments = <String>['','OFV','A', 'B', 'C', 'D', 'F','G','H','I'];
-  String _compartment = '';
+  List<String> ticketCats = <String>['1st Class', '2nd Class', '3rd Class',''];
+  String ticketCato = '';
 
-  List<String> _purposes = <String>['','Sale','Exchange'];
-  String _purpose = '';
 
 
 
@@ -58,7 +54,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
               children: <Widget>[
                 Container(
                     padding: EdgeInsets.only(
-                      top: 35.0, left: 20.0, right: 20.0,),
+                       left: 20.0, right: 20.0,),
                     child: Column(
                       children: <Widget>[
                         TextFormField(
@@ -138,104 +134,37 @@ class _AddNewTicketState extends State<AddNewTicket> {
                         ),
                         SizedBox(height: 20.0),
                         new FormField<String>(
-                          onSaved: (input) => purpose = input,
-                          builder: (FormFieldState<String> state) {
-                            return InputDecorator(
-                              decoration: InputDecoration(
-                                  labelText: 'PURPOSE',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))
-                              ),
-                              isEmpty: _purpose == '',
-                              child: new DropdownButtonHideUnderline(
-                                child: new DropdownButton<String>(
-                                  value: _purpose,
-                                  isDense: true,
-                                  onChanged: (String newValue) {
-                                    setState(() {
-                                      _purpose = newValue;
-                                      state.didChange(newValue);
-                                    });
-                                  },
-                                  items: _purposes.map((String value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value,
-                                      child: new Text(value),
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            );
+                          validator: (input) {
+                            if( input == null) {
+                              return 'Please select ticket category';
+                            }
                           },
-                        ),
-                        SizedBox(height: 20.0),
-                        new FormField<String>(
-                          onSaved: (input) => ticketType = input,
+                          onSaved: (input) => ticketCato = input,
                           builder: (FormFieldState<String> state) {
                             return InputDecorator(
                               decoration: InputDecoration(
-                                  labelText: 'TICKET TYPE',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))
+                                  labelText: 'TICKET CATEGORY',
 
-                              ),
-                              isEmpty: _ticketType == '',
-                              child: new DropdownButtonHideUnderline(
-                                child: new DropdownButton<String>(
-                                  value: _ticketType,
-                                  isDense: true,
-                                  onChanged: (String newValue) {
-                                    setState(() {
-                                      _ticketType = newValue;
-                                      state.didChange(newValue);
-                                    });
-                                  },
-                                  items: _ticketTypes.map((String value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value,
-                                      child: new Text(value),
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            );
-                          },
-
-                        ),
-                        SizedBox(height: 20.0),
-                        new FormField<String>(
-                          onSaved: (input) => compartment = input,
-                          builder: (FormFieldState<String> state) {
-                            return InputDecorator(
-                              decoration: InputDecoration(
-                                labelText: 'COMPARTMENT',
                                   labelStyle: TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey),
                                   focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))
+                                      borderSide: BorderSide(color: Colors.green)),
+                                errorText: state.hasError ? state.errorText : null,
                               ),
-                              isEmpty: _compartment == '',
+                              isEmpty: ticketCato == '',
                               child: new DropdownButtonHideUnderline(
                                 child: new DropdownButton<String>(
-                                  value: _compartment,
+                                  value: ticketCato,
                                   isDense: true,
                                   onChanged: (String newValue) {
                                     setState(() {
-                                      _compartment = newValue;
+                                      ticketCato = newValue;
                                       state.didChange(newValue);
                                     });
                                   },
-                                  items: _compartments.map((String value) {
+                                  items: ticketCats.map((String value) {
                                     return new DropdownMenuItem<String>(
                                       value: value,
                                       child: new Text(value),
@@ -245,18 +174,6 @@ class _AddNewTicketState extends State<AddNewTicket> {
                               ),
                             );
                           },
-                        ),
-                        SizedBox(height: 20.0),
-                        TextFormField(
-                        onSaved: (input) => seatNo = input,
-                          decoration: InputDecoration(
-                              labelText: 'SEAT NO',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
 
                         ),
                         SizedBox(height: 20.0),
@@ -312,10 +229,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
               'startStation':startStation,
               'endStation':endStation,
               'price':price,
-              'purpose':purpose,
-              'ticketType':ticketType,
-              'compartment':compartment,
-              'seatNo':seatNo,
+              'ticketType':ticketCato,
               'contactNo':contactNo,
               'dateTime':dateTime,
             });
