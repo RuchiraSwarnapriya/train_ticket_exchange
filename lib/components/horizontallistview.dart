@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:train_ticket_exchange/pages/1st_cls_ac.dart';
-import 'package:train_ticket_exchange/pages/1st_cls_lux.dart';
 import 'package:train_ticket_exchange/pages/1st_cls_nor.dart';
 import 'package:train_ticket_exchange/pages/1st_cls_obv.dart';
 import 'package:train_ticket_exchange/pages/2nd_cls_nor.dart';
-import 'package:train_ticket_exchange/pages/2nd_cls_slp.dart';
 import 'package:train_ticket_exchange/pages/3rd_cls_nor.dart';
-import 'package:train_ticket_exchange/pages/3rd_cls_slp.dart';
 
 class HorizontalList extends StatelessWidget {
   @override
@@ -30,12 +27,6 @@ class HorizontalList extends StatelessWidget {
               )
           ),
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsLux())),
-              child: Category(
-                imageLocation: "images/ticketcato/1stclasssleep.png",
-              )
-          ),
-          GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsNor())),
               child: Category(
                 imageLocation: "images/ticketcato/1stclassnormal.png",
@@ -48,21 +39,9 @@ class HorizontalList extends StatelessWidget {
               )
           ),
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> SecondClsSlp())),
-              child: Category(
-                imageLocation: "images/ticketcato/2ndclasssleep.png",
-              )
-          ),
-          GestureDetector(
               onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> ThirdClsNor())),
               child: Category(
                 imageLocation: "images/ticketcato/3rdclassnormal.png",
-              )
-          ),
-          GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> ThirdClsSlp())),
-              child: Category(
-                imageLocation: "images/ticketcato/3rdclasssleep.png",
               )
           ),
         ],

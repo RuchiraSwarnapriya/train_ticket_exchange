@@ -24,8 +24,8 @@ class _MyAccountState extends State<MyAccount> {
         mainAxisSpacing: 12.0,
         padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0),
         children: <Widget>[
-          myItems(Icons.attach_money,"Sell Ticket",0xffed622b),
-          myItems(Icons.settings,"Settings",0xffed622b),
+          myItems(Icons.attach_money,"Sell Ticket"),
+          myItems(Icons.settings,"Settings"),
         ],
         staggeredTiles: [
           StaggeredTile.extent(1, 150.0),
@@ -38,12 +38,12 @@ class _MyAccountState extends State<MyAccount> {
     );
   }
 
-  Material myItems(IconData icon,String heading, int color){
+  Material myItems(IconData icon,String heading){
     return Material(
       color: Colors.white,
       elevation: 14.0,
       shadowColor: Colors.grey,
-      borderRadius: BorderRadius.circular(24.0),
+      borderRadius: BorderRadius.circular(15.0),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -61,20 +61,19 @@ class _MyAccountState extends State<MyAccount> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(heading,
                         style: TextStyle(
-                          color: new Color(color),
                           fontSize: 20.0,
                         ),
                       ),
                     ),
 
                     Material(
-                      color: new Color(color),
-                      borderRadius: BorderRadius.circular(24.0),
+//                      color: Colors.black,
+//                      borderRadius: BorderRadius.circular(10.0),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Icon(
                           icon,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 30.0,
                         ),
 

@@ -31,7 +31,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
   bool editable = true;
 
 
-  List<String> ticketCats = <String>['1st Class', '2nd Class', '3rd Class',''];
+  List<String> ticketCats = <String>['1st Class A/C','1st Class OBV','1st Class Normal','2nd Class', '3rd Class',''];
   String ticketCato = '';
 
 
@@ -224,7 +224,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try{
-        DocumentReference ref = await db.collection('TicketDetails').add(
+        DocumentReference ref = await db.collection('TicketDetails').document(ticketCato).collection("Tickets").add(
             {
               'startStation':startStation,
               'endStation':endStation,
