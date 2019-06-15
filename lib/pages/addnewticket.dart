@@ -31,7 +31,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
   bool editable = true;
 
 
-  List<String> ticketCats = <String>['1st Class A/C','1st Class OBV','1st Class Normal','2nd Class', '3rd Class',''];
+  List<String> ticketCats = <String>['1st Class AC','1st Class OBV','1st Class Normal','2nd Class', '3rd Class',''];
   String ticketCato = '';
 
 
