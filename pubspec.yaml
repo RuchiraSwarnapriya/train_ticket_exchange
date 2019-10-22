@@ -63,6 +63,9 @@ flutter:
      - images/ticketcato/3rdclasssleep.png
      - images/myaccount/sell.png
      - images/myaccount/ticket.png
+     - images/homepage/mainLine.jpg
+     - images/homepage/costalLine.jpg
+     - images/homepage/northLine.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
