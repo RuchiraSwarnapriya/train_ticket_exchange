@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:train_ticket_exchange/pages/addnewticket.dart';
+import 'package:train_ticket_exchange/pages/settings.dart';
 import 'package:train_ticket_exchange/pages/requestTicket.dart';
 
 class MyAccount extends StatefulWidget {

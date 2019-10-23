@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_ticket_exchange/pages/myaccount.dart';
 import 'package:train_ticket_exchange/pages/signUppage.dart';
+import 'package:train_ticket_exchange/pages/ticketdetails.dart';
 import 'package:train_ticket_exchange/pages/addnewticket.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
