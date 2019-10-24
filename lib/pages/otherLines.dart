@@ -13,11 +13,18 @@ class OtherLines extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          new Padding(padding: const EdgeInsets.all(10.0),
+          new Padding(padding: const EdgeInsets.all(20.0),
           child: new Text("Ticket Categories", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),),
           OtherLinesCatogries()
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        // Add your onPressed code here!
+      },
+      child: Icon(Icons.add),
+      backgroundColor: Colors.green,
+    ),
     );
   }
 }
