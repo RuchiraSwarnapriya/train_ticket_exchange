@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:train_ticket_exchange/pages/1st_cls_ac.dart';
 import 'package:train_ticket_exchange/pages/1st_cls_nor.dart';
 import 'package:train_ticket_exchange/pages/1st_cls_obv.dart';
 import 'package:train_ticket_exchange/pages/2nd_cls_nor.dart';
 import 'package:train_ticket_exchange/pages/3rd_cls_nor.dart';
 
-class HorizontalList extends StatelessWidget {
+class MainLineCatogries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-
+      height: 150.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
@@ -52,8 +52,6 @@ class HorizontalList extends StatelessWidget {
 
 class Category extends StatelessWidget {
   final String imageLocation;
-
-
   Category({
     this.imageLocation,
   });
@@ -66,7 +64,6 @@ class Category extends StatelessWidget {
         child: ListTile(
           title: Image.asset(
             imageLocation,
-            
           ),
         ),
       ),
@@ -74,4 +71,3 @@ class Category extends StatelessWidget {
     );
   }
 }
-

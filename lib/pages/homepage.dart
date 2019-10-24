@@ -274,7 +274,7 @@ class _HomePageDesignState extends State<HomePageDesign> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Northern Line",
+                  "North Line",
                   style: TextStyle(fontSize: 16),
                 ),
                 Text("Colombo to" + "\n" + "Anuradapura,Jaffna",
