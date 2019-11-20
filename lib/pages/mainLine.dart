@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_ticket_exchange/components/mainLineCato.dart';
+import 'package:train_ticket_exchange/pages/addnewticket.dart';
 
 class MainLine extends StatelessWidget {
   @override
@@ -20,7 +21,10 @@ class MainLine extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
       onPressed: () {
-        // Add your onPressed code here!
+        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddNewTicket()),
+            );
       },
       child: Icon(Icons.add),
       backgroundColor: Colors.green,

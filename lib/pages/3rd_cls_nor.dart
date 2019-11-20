@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 
 class ThirdClsNor extends StatefulWidget {
   @override
@@ -13,7 +14,6 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
 
   Future getTickets() async{
     QuerySnapshot qn = await Firestore.instance.collection("TicketDetails").document('3rd Class').collection('Tickets').getDocuments();
-
     return qn.documents;
   }
 
@@ -24,9 +24,9 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
 
   void initState(){
     super.initState();
-
     data = getTickets();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
@@ -40,7 +40,7 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
               builder: (_, snapshot){
                 if(snapshot.connectionState == ConnectionState.waiting){
                   return Center(
-                    child: Text("Loading ..."),
+                    child: CupertinoActivityIndicator(),
                   );
                 }else{
                   return ListView.builder(
@@ -58,13 +58,12 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
                             ],
                           ),
                         );
+
                         var dateTime = snapshot.data[index].data["dateTime"];
 
                         var date = new DateFormat("EEE, MMM d, yyyy").format(dateTime);
 
                         var time = new DateFormat("h:mm a").format(dateTime);
-
-//                        var time = DateTime.parse(day);
 
                         Widget column2 = Expanded(
                           child: Column(
@@ -126,10 +125,10 @@ class _TicketDetailsState extends State<TicketDetails> {
         iconTheme: new IconThemeData(color:Colors.black),
       ),
       body: Container(
-        child: Card(
-          child: ListTile(
-            title: Text(widget.post.data["startStation"]),
-          ),
+        child: Column(
+          children: <Widget>[
+            Text(widget.post.data["startStation"]),
+          ],
         ),
 
       ),
