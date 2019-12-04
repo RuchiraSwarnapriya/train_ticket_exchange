@@ -3,32 +3,30 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 
-class FirstClsObv extends StatefulWidget {
+class ThirdClsNor extends StatefulWidget {
   @override
-  _FirstClsObvState createState() => _FirstClsObvState();
+  _ThirdClsNorState createState() => _ThirdClsNorState();
 }
 
-class _FirstClsObvState extends State<FirstClsObv> {
+class _ThirdClsNorState extends State<ThirdClsNor> {
 
   Future data;
 
   Future getTickets() async{
-    QuerySnapshot qn = await Firestore.instance.collection("TicketDetails").document('1st Class OBV').collection('Tickets').getDocuments();
-
+    QuerySnapshot qn = await Firestore.instance.collection("NorthernLineTicketDetails").document('3rd Class').collection('Tickets').getDocuments();
     return qn.documents;
   }
 
   navigateToDetail(DocumentSnapshot post){
     Navigator.push(context, MaterialPageRoute(builder: (context) => TicketDetails(post: post,)));
   }
-
   @override
 
   void initState(){
     super.initState();
-
     data = getTickets();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
@@ -60,13 +58,12 @@ class _FirstClsObvState extends State<FirstClsObv> {
                             ],
                           ),
                         );
+
                         var dateTime = snapshot.data[index].data["dateTime"];
 
                         var date = new DateFormat("EEE, MMM d, yyyy").format(dateTime);
 
                         var time = new DateFormat("h:mm a").format(dateTime);
-
-//                        var time = DateTime.parse(day);
 
                         Widget column2 = Expanded(
                           child: Column(
@@ -102,10 +99,11 @@ class _FirstClsObvState extends State<FirstClsObv> {
                 }
               }),
         )
+
     );
+
   }
 }
-
 class TicketDetails extends StatefulWidget {
 
   final DocumentSnapshot post;
@@ -127,13 +125,14 @@ class _TicketDetailsState extends State<TicketDetails> {
         iconTheme: new IconThemeData(color:Colors.black),
       ),
       body: Container(
-        child: Card(
-          child: ListTile(
-            title: Text(widget.post.data["startStation"]),
-          ),
+        child: Column(
+          children: <Widget>[
+            Text(widget.post.data["startStation"]),
+          ],
         ),
 
       ),
     );
   }
 }
+

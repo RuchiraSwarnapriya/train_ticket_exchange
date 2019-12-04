@@ -3,30 +3,32 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 
-class ThirdClsNor extends StatefulWidget {
+class FirstClsObv extends StatefulWidget {
   @override
-  _ThirdClsNorState createState() => _ThirdClsNorState();
+  _FirstClsObvState createState() => _FirstClsObvState();
 }
 
-class _ThirdClsNorState extends State<ThirdClsNor> {
+class _FirstClsObvState extends State<FirstClsObv> {
 
   Future data;
 
   Future getTickets() async{
-    QuerySnapshot qn = await Firestore.instance.collection("TicketDetails").document('3rd Class').collection('Tickets').getDocuments();
+    QuerySnapshot qn = await Firestore.instance.collection("MainLineTicketDetails").document('1st Class OBV').collection('Tickets').getDocuments();
+
     return qn.documents;
   }
 
   navigateToDetail(DocumentSnapshot post){
     Navigator.push(context, MaterialPageRoute(builder: (context) => TicketDetails(post: post,)));
   }
+
   @override
 
   void initState(){
     super.initState();
+
     data = getTickets();
   }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
@@ -58,7 +60,6 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
                             ],
                           ),
                         );
-
                         var dateTime = snapshot.data[index].data["dateTime"];
 
                         var date = new DateFormat("EEE, MMM d, yyyy").format(dateTime);
@@ -99,11 +100,10 @@ class _ThirdClsNorState extends State<ThirdClsNor> {
                 }
               }),
         )
-
     );
-
   }
 }
+
 class TicketDetails extends StatefulWidget {
 
   final DocumentSnapshot post;
@@ -125,14 +125,13 @@ class _TicketDetailsState extends State<TicketDetails> {
         iconTheme: new IconThemeData(color:Colors.black),
       ),
       body: Container(
-        child: Column(
-          children: <Widget>[
-            Text(widget.post.data["startStation"]),
-          ],
+        child: Card(
+          child: ListTile(
+            title: Text(widget.post.data["startStation"]),
+          ),
         ),
 
       ),
     );
   }
 }
-

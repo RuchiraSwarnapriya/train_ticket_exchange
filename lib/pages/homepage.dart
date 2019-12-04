@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:train_ticket_exchange/pages/mainLine.dart';
-import 'package:train_ticket_exchange/pages/costalLine.dart';
-import 'package:train_ticket_exchange/pages/nothernLine.dart';
-import 'package:train_ticket_exchange/pages/otherLines.dart';
+import 'package:train_ticket_exchange/pages/mainLine/mainLine.dart';
+import 'package:train_ticket_exchange/pages/costalLine/costalLine.dart';
+import 'package:train_ticket_exchange/pages/northernLine/nothernLine.dart';
+import 'package:train_ticket_exchange/pages/otherLines/otherLines.dart';
 
 class HomePageDesign extends StatefulWidget {
   @override
@@ -14,23 +14,7 @@ class HomePageDesign extends StatefulWidget {
 
 class _HomePageDesignState extends State<HomePageDesign> {
   @override
-  Widget imageCarousel = new Container(
-    height: 200.0,
-    child: new Carousel(
-      boxFit: BoxFit.cover,
-      images: [
-        AssetImage('images/carousel/1.jpg'),
-        AssetImage('images/carousel/2.jpg'),
-        AssetImage('images/carousel/3.jpg'),
-        AssetImage('images/carousel/4.jpg'),
-      ],
-      autoplay: true,
-      animationCurve: Curves.fastOutSlowIn,
-      animationDuration: Duration(milliseconds: 1000),
-      dotSize: 3.0,
-      indicatorBgPadding: 5.0,
-    ),
-  );
+  
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,6 +195,24 @@ class _HomePageDesignState extends State<HomePageDesign> {
       ),
     );
   }
+
+  Widget imageCarousel = new Container(
+    height: 200.0,
+    child: new Carousel(
+      boxFit: BoxFit.cover,
+      images: [
+        AssetImage('images/carousel/1.jpg'),
+        AssetImage('images/carousel/2.jpg'),
+        AssetImage('images/carousel/3.jpg'),
+        AssetImage('images/carousel/4.jpg'),
+      ],
+      autoplay: true,
+      animationCurve: Curves.fastOutSlowIn,
+      animationDuration: Duration(milliseconds: 1000),
+      dotSize: 3.0,
+      indicatorBgPadding: 5.0,
+    ),
+  );
 
   Widget mainLine() {
     return Column(

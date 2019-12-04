@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:train_ticket_exchange/pages/1st_cls_ac.dart';
-import 'package:train_ticket_exchange/pages/1st_cls_nor.dart';
-import 'package:train_ticket_exchange/pages/2nd_cls_nor.dart';
-import 'package:train_ticket_exchange/pages/3rd_cls_nor.dart';
+import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/1st_cls_nor.dart';
+import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/1st_cls_ac.dart';
+import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/2nd_cls_nor.dart';
+import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/3rd_cls_nor.dart';
 
 class OtherLinesCatogries extends StatelessWidget {
   @override

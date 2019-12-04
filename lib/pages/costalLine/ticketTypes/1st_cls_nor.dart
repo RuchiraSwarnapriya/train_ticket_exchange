@@ -13,7 +13,7 @@ class _FirstClsNorState extends State<FirstClsNor> {
   Future data;
 
   Future getTickets() async{
-    QuerySnapshot qn = await Firestore.instance.collection("TicketDetails").document('1st Class Normal').collection('Tickets').getDocuments();
+    QuerySnapshot qn = await Firestore.instance.collection("CostalLineTicketDetails").document('1st Class Normal').collection('Tickets').getDocuments();
 
     return qn.documents;
   }
