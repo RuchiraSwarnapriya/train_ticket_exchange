@@ -1,4 +1,4 @@
-# train_ticket_exchange
+# Train Ticket Exchanger
 
 Flutter based train ticket exchnage app
 
