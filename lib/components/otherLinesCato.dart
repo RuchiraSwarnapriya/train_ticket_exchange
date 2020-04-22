@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/1st_cls_nor.dart';
 import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/1st_cls_ac.dart';
 import 'package:train_ticket_exchange/pages/otherLInes/ticketTypes/2nd_cls_nor.dart';
@@ -14,29 +13,29 @@ class OtherLinesCatogries extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsAC())),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => FirstClsAC())),
               child: Category(
                 imageLocation: "images/ticketcato/1stclassac.png",
-              )
-          ),
+              )),
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> FirstClsNor())),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => FirstClsNor())),
               child: Category(
                 imageLocation: "images/ticketcato/1stclassnormal.png",
-              )
-          ),
+              )),
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> SecondClsNor())),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => SecondClsNor())),
               child: Category(
                 imageLocation: "images/ticketcato/2ndclassnormal.png",
-              )
-          ),
+              )),
           GestureDetector(
-              onTap: ()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=> ThirdClsNor())),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => ThirdClsNor())),
               child: Category(
                 imageLocation: "images/ticketcato/3rdclassnormal.png",
-              )
-          ),
+              )),
         ],
       ),
     );
@@ -48,10 +47,10 @@ class Category extends StatelessWidget {
   Category({
     this.imageLocation,
   });
-
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.all(2.0),
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
       child: Container(
         width: 120,
         child: ListTile(
@@ -60,7 +59,6 @@ class Category extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }
