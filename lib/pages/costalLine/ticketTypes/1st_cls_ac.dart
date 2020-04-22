@@ -9,15 +9,14 @@ class FirstClsAC extends StatefulWidget {
 }
 
 class _FirstClsACState extends State<FirstClsAC> {
+  
   Future data;
-
   Future getTickets() async {
     QuerySnapshot qn = await Firestore.instance
         .collection("CostalLineTicketDetails")
         .document('1st Class AC')
         .collection('Tickets')
         .getDocuments();
-
     return qn.documents;
   }
 
@@ -62,7 +61,6 @@ class _FirstClsACState extends State<FirstClsAC> {
                         var date =
                             new DateFormat("EEE, MMM d, yyyy").format(dateTime);
                         var time = new DateFormat("h:mm a").format(dateTime);
-
                         Widget column1 = Expanded(
                           child: Column(
                             // align the text to the left instead of centered

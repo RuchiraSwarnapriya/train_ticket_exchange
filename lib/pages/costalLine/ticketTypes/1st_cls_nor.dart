@@ -3,31 +3,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 
-class FirstClassNormal extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      FirstClsNor()
-      
-    );
-  }
-}
-
 class FirstClsNor extends StatefulWidget {
   @override
   _FirstClsNorState createState() => _FirstClsNorState();
 }
 
 class _FirstClsNorState extends State<FirstClsNor> {
+  
   Future data;
-
   Future getTickets() async {
     QuerySnapshot qn = await Firestore.instance
         .collection("CostalLineTicketDetails")
         .document('1st Class Normal')
         .collection('Tickets')
         .getDocuments();
-
     return qn.documents;
   }
 
@@ -90,7 +79,6 @@ class _FirstClsNorState extends State<FirstClsNor> {
                         var date =
                             new DateFormat("EEE, MMM d, yyyy").format(dateTime);
                         var time = new DateFormat("h:mm a").format(dateTime);
-
                         Widget column2 = Expanded(
                           child: Column(
                             // align the text to the left instead of centered
