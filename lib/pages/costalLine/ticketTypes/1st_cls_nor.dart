@@ -26,7 +26,6 @@ class _FirstClsNorState extends State<FirstClsNor> {
 
   void initState(){
     super.initState();
-
     data = getTickets();
   }
   Widget build(BuildContext context) {
