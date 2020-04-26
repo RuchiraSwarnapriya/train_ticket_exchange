@@ -49,7 +49,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           iconTheme: new IconThemeData(color: Colors.black),
           title: Text('Ticket Details',
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
         ),

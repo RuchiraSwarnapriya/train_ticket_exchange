@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:train_ticket_exchange/pages/mainLine/mainLine.dart';
 import 'package:train_ticket_exchange/pages/costalLine/costalLine.dart';
 import 'package:train_ticket_exchange/pages/northernLine/nothernLine.dart';
@@ -14,8 +13,6 @@ class HomePageDesign extends StatefulWidget {
 
 class _HomePageDesignState extends State<HomePageDesign> {
   @override
-  
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
@@ -54,7 +51,8 @@ class _HomePageDesignState extends State<HomePageDesign> {
                                 child: Image(
                                   fit: BoxFit.contain,
                                   alignment: Alignment.center,
-                                  image: AssetImage('images/homepage/mainLine.jpg'),
+                                  image: AssetImage(
+                                      'images/homepage/mainLine.jpg'),
                                 ),
                               ),
                             )),
@@ -96,7 +94,8 @@ class _HomePageDesignState extends State<HomePageDesign> {
                                 child: Image(
                                   fit: BoxFit.contain,
                                   alignment: Alignment.center,
-                                  image: AssetImage('images/homepage/costalLine.jpg'),
+                                  image: AssetImage(
+                                      'images/homepage/costalLine.jpg'),
                                 ),
                               ),
                             )),
@@ -138,7 +137,8 @@ class _HomePageDesignState extends State<HomePageDesign> {
                                 child: Image(
                                   fit: BoxFit.contain,
                                   alignment: Alignment.center,
-                                  image: AssetImage('images/homepage/northLine.jpg'),
+                                  image: AssetImage(
+                                      'images/homepage/northLine.jpg'),
                                 ),
                               ),
                             )),
@@ -180,7 +180,8 @@ class _HomePageDesignState extends State<HomePageDesign> {
                                 child: Image(
                                   fit: BoxFit.contain,
                                   alignment: Alignment.center,
-                                  image: AssetImage('images/homepage/otherLines.jpg'),
+                                  image: AssetImage(
+                                      'images/homepage/otherLines.jpg'),
                                 ),
                               ),
                             )),
